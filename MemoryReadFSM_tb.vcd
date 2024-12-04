@@ -1,0 +1,202 @@
+$date
+	Wed Dec 04 16:08:38 2024
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module MemoryReadFSM_tb $end
+$var wire 2 ! ResultSrc [1:0] $end
+$var wire 1 " RegWrite $end
+$var wire 1 # NextPC $end
+$var wire 1 $ MemRead $end
+$var wire 1 % IRWrite $end
+$var wire 1 & AdrSrc $end
+$var wire 2 ' ALUSrcB [1:0] $end
+$var wire 1 ( ALUSrcA $end
+$var wire 2 ) ALUOp [1:0] $end
+$var reg 1 * Func $end
+$var reg 2 + Op [1:0] $end
+$var reg 1 , clk $end
+$var reg 1 - reset $end
+$scope module uut $end
+$var wire 1 * Func $end
+$var wire 2 . Op [1:0] $end
+$var wire 1 , clk $end
+$var wire 1 - reset $end
+$var parameter 3 / DECODE $end
+$var parameter 3 0 FETCH $end
+$var parameter 3 1 MEM_ADR $end
+$var parameter 3 2 MEM_READ $end
+$var parameter 3 3 MEM_WB $end
+$var reg 2 4 ALUOp [1:0] $end
+$var reg 1 ( ALUSrcA $end
+$var reg 2 5 ALUSrcB [1:0] $end
+$var reg 1 & AdrSrc $end
+$var reg 1 % IRWrite $end
+$var reg 1 $ MemRead $end
+$var reg 1 # NextPC $end
+$var reg 1 " RegWrite $end
+$var reg 2 6 ResultSrc [1:0] $end
+$var reg 3 7 current_state [2:0] $end
+$var reg 3 8 next_state [2:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b100 3
+b11 2
+b10 1
+b0 0
+b1 /
+$end
+#0
+$dumpvars
+b1 8
+b0 7
+b10 6
+b10 5
+b0 4
+b0 .
+1-
+0,
+b0 +
+0*
+b0 )
+1(
+b10 '
+0&
+1%
+0$
+1#
+0"
+b10 !
+$end
+#5000
+1,
+#10000
+0,
+0-
+#15000
+0#
+0%
+b10 !
+b10 6
+b10 '
+b10 5
+1(
+b0 8
+b1 7
+1,
+#20000
+b10 8
+0,
+1*
+b1 +
+b1 .
+#25000
+b0 !
+b0 6
+b1 '
+b1 5
+0(
+b11 8
+b10 7
+1,
+#30000
+0,
+#35000
+1&
+1$
+b0 '
+b0 5
+b100 8
+b11 7
+1,
+#40000
+0,
+#45000
+1"
+b1 !
+b1 6
+0$
+0&
+b0 8
+b100 7
+1,
+#50000
+0,
+#55000
+1#
+1%
+b10 '
+b10 5
+1(
+0"
+b10 !
+b10 6
+b1 8
+b0 7
+1,
+#60000
+0,
+#65000
+0#
+0%
+b10 !
+b10 6
+b10 '
+b10 5
+1(
+b10 8
+b1 7
+1,
+#70000
+0,
+#75000
+b0 !
+b0 6
+b1 '
+b1 5
+0(
+b11 8
+b10 7
+1,
+#80000
+0,
+#85000
+1&
+1$
+b0 '
+b0 5
+b100 8
+b11 7
+1,
+#90000
+0,
+#95000
+1"
+b1 !
+b1 6
+0$
+0&
+b0 8
+b100 7
+1,
+#100000
+0,
+#105000
+1#
+1%
+b10 '
+b10 5
+1(
+0"
+b10 !
+b10 6
+b1 8
+b0 7
+1,
