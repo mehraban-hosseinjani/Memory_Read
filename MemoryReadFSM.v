@@ -1,60 +1,60 @@
 module MemoryReadFSM (
-    input clk,             // سیگنال ساعت
-    input reset,           // سیگنال ریست
-    input [1:0] Op,        // نوع دستور (برای تشخیص عملیات Memory Read)
-    input Func,            // تابع برای شناسایی دستور LDR
-    output reg AdrSrc,     // کنترل انتخاب آدرس
-    output reg ALUSrcA,    // ورودی اول ALU
-    output reg [1:0] ALUSrcB, // ورودی دوم ALU
-    output reg [1:0] ALUOp,   // نوع عملیات ALU
-    output reg [1:0] ResultSrc, // کنترل انتخاب نتیجه
-    output reg IRWrite,    // سیگنال نوشتن در رجیستر دستور
-    output reg NextPC,     // سیگنال برای به‌روز‌رسانی PC
-    output reg RegWrite,   // سیگنال نوشتن در رجیستر
-    output reg MemRead     // سیگنال خواندن از حافظه
+    input clk,             
+    input reset,           
+    input [1:0] Op,        
+    input Func,           
+    output reg AdrSrc,    
+    output reg ALUSrcA,   
+    output reg [1:0] ALUSrcB, 
+    output reg [1:0] ALUOp,   
+    output reg [1:0] ResultSrc, 
+    output reg IRWrite,   
+    output reg NextPC,    
+    output reg RegWrite,   
+    output reg MemRead     
 );
 
-    // تعریف حالت‌ها به صورت مقادیر ثابت
+   
     localparam FETCH    = 3'b000;  // S0: Fetch
     localparam DECODE   = 3'b001;  // S1: Decode
     localparam MEM_ADR  = 3'b010;  // S2: MemAdr
     localparam MEM_READ = 3'b011;  // S3: MemRead
     localparam MEM_WB   = 3'b100;  // S4: MemWB
 
-    reg [2:0] current_state, next_state; // حالت فعلی و بعدی
+    reg [2:0] current_state, next_state; 
 
-    // بلاک انتقال وضعیت‌ها
+
     always @(posedge clk or posedge reset) begin
         if (reset)
-            current_state <= FETCH; // بازگشت به حالت Fetch در صورت ریست
+            current_state <= FETCH; 
         else
-            current_state <= next_state; // انتقال به حالت بعدی
+            current_state <= next_state; 
     end
 
-    // منطق انتقال بین وضعیت‌ها
+   
     always @(*) begin
-        // مقدار پیش‌فرض برای جلوگیری از خطا
+        
         next_state = current_state;
         case (current_state)
             FETCH: 
-                next_state = DECODE; // انتقال به Decode
+                next_state = DECODE; 
             DECODE: 
-                if (Op == 2'b01) // اگر دستور Memory Read باشد
+                if (Op == 2'b01)
                     next_state = MEM_ADR;
                 else
                     next_state = FETCH;
             MEM_ADR: 
-                next_state = MEM_READ; // انتقال به حالت خواندن حافظه
+                next_state = MEM_READ;
             MEM_READ: 
-                next_state = MEM_WB; // انتقال به نوشتن در رجیستر
+                next_state = MEM_WB; 
             MEM_WB: 
-                next_state = FETCH; // بازگشت به Fetch برای دستور بعدی
+                next_state = FETCH; 
         endcase
     end
 
-    // منطق خروجی بر اساس وضعیت فعلی
+    
     always @(*) begin
-        // مقداردهی پیش‌فرض به سیگنال‌ها
+       
         AdrSrc = 0; ALUSrcA = 0; ALUSrcB = 2'b00; ALUOp = 2'b00; 
         ResultSrc = 2'b00; IRWrite = 0; NextPC = 0; RegWrite = 0; MemRead = 0;
 
