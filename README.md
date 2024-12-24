@@ -44,3 +44,17 @@ Highlights:
 **The Memory Read FSM is functioning as expected, with accurate state transitions and correct activation of control signals at each stage. The simulation results confirm that the module successfully performs the memory read operation.
 
 If you would like further elaboration on any state or signal behavior, or suggestions for enhancements, feel free to ask!**
+
+[FSM_Project_Guide.docx](https://github.com/user-attachments/files/18239025/FSM_Project_Guide.docx)
+**Here is the project document that explains step by step how it is done.
+**
+
+
+
+
+
+
+
+
+
+
